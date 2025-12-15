@@ -1,3 +1,15 @@
+Source : https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
+
+데이터 크기가 크고 folder를 통한 구조화가 되어 있어 본 프로젝트에 데이터셋은 포함하지 않았으며, 출처 링크를 남겨두었습니다.
+
+또한 프로젝트 분석 과정은 블로그에 정리되어 있습니다.
+아래 링크에서 확인해주세요.
+
+👉 https://velog.io/@applez/kaggle-03
+👉 https://velog.io/@applez/kaggle-04
+
+---
+
 1. 이 데이터는 무엇을 위해 만들어졌나요?
 
 이 데이터셋은 스마트폰 센서로 사람의 활동을 자동으로 인식(HAR, Human Activity Recognition) 하기 위해 만들어졌습니다.
@@ -125,5 +137,6 @@ train과 동일한 구조의 테스트 세트.
 7. 이 데이터셋을 사용할 때 참고해야 하는 점
 
 연구 목적–비상업적 사용 권장
+
 
 논문이나 프로젝트에 사용할 경우 README에 적힌 2013 ESANN 논문을 인용해야 함
