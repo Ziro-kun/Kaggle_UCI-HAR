@@ -1,82 +1,142 @@
-===================================================================================================
-Human Activity Recognition Using Smartphones Dataset
-Version 1.0
-===================================================================================================
-Jorge L. Reyes-Ortiz(1,2), Davide Anguita(1), Alessandro Ghio(1), Luca Oneto(1) and Xavier Parra(2)
-1 - Smartlab - Non-Linear Complex Systems Laboratory
-DITEN - Universit�  degli Studi di Genova, Genoa (I-16145), Italy. 
-2 - CETpD - Technical Research Centre for Dependency Care and Autonomous Living
-Universitat Polit�cnica de Catalunya (BarcelonaTech). Vilanova i la Geltr� (08800), Spain
-activityrecognition '@' smartlab.ws 
-===================================================================================================
+Source : https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
 
-The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+데이터 크기가 크고 folder를 통한 구조화가 되어 있어 본 프로젝트에 데이터셋은 포함하지 않았으며, 출처 링크를 남겨두었습니다.
 
-The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
+또한 프로젝트 분석 과정은 블로그에 정리되어 있습니다.
+아래 링크에서 확인해주세요.
 
-For each record it is provided:
-======================================
+👉 https://velog.io/@applez/kaggle-03
+👉 https://velog.io/@applez/kaggle-04
 
-- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
-- Triaxial Angular velocity from the gyroscope. 
-- A 561-feature vector with time and frequency domain variables. 
-- Its activity label. 
-- An identifier of the subject who carried out the experiment.
+---
 
-The dataset includes the following files:
-=========================================
+1. 이 데이터는 무엇을 위해 만들어졌나요?
 
-- 'README.txt'
+이 데이터셋은 스마트폰 센서로 사람의 활동을 자동으로 인식(HAR, Human Activity Recognition) 하기 위해 만들어졌습니다.
+사람이 다음 6가지 행동을 할 때 스마트폰이 감지한 가속도 + 자이로스코프 신호를 분석하여 “지금 어떤 활동인가?”를 분류하는 데 사용됩니다.
 
-- 'features_info.txt': Shows information about the variables used on the feature vector.
+**6가지 활동(class)**
 
-- 'features.txt': List of all features.
+걷기 (WALKING)
 
-- 'activity_labels.txt': Links the class labels with their activity name.
+계단 오르기 (WALKING_UPSTAIRS)
 
-- 'train/X_train.txt': Training set.
+계단 내려가기 (WALKING_DOWNSTAIRS)
 
-- 'train/y_train.txt': Training labels.
+앉기 (SITTING)
 
-- 'test/X_test.txt': Test set.
+서 있기 (STANDING)
 
-- 'test/y_test.txt': Test labels.
+누워 있기 (LAYING)
 
-The following files are available for the train and test data. Their descriptions are equivalent. 
+2. 실험은 어떻게 진행되었나요?
 
-- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+참여자: 19~48세 사이의 성인 30명
 
-- 'train/Inertial Signals/total_acc_x_train.txt': The acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. Every row shows a 128 element vector. The same description applies for the 'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis. 
+센서 위치: 허리(벨트)에 고정한 스마트폰(갤럭시 S2)
 
-- 'train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
+수집 데이터:
 
-- 'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
+가속도(accelerometer) – 3축 (X, Y, Z)
 
-Notes: 
-======
-- Features are normalized and bounded within [-1,1].
-- Each feature vector is a row on the text file.
-- The units used for the accelerations (total and body) are 'g's (gravity of earth -> 9.80665 m/seg2).
-- The gyroscope units are rad/seg.
-- A video of the experiment including an example of the 6 recorded activities with one of the participants can be seen in the following link: http://www.youtube.com/watch?v=XOEN9W05_4A
+자이로스코프(gyro) – 3축 (X, Y, Z)
 
-For more information about this dataset please contact: activityrecognition '@' smartlab.ws
+샘플링 속도: 50Hz (초당 50회 측정)
 
-License:
-========
-Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
+라벨링: 실험 장면을 영상 촬영하여 사람이 수작업으로 활동 레이블을 부여
 
-[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013. 
+데이터 분리 방식:
 
-This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.
+참가자 30명 중 70% → 학습(train)
 
-Other Related Publications:
-===========================
-[2] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra, Jorge L. Reyes-Ortiz.  Energy Efficient Smartphone-Based Activity Recognition using Fixed-Point Arithmetic. Journal of Universal Computer Science. Special Issue in Ambient Assisted Living: Home Care.   Volume 19, Issue 9. May 2013
+나머지 30% → 테스트(test)
 
-[3] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. 4th International Workshop of Ambient Assited Living, IWAAL 2012, Vitoria-Gasteiz, Spain, December 3-5, 2012. Proceedings. Lecture Notes in Computer Science 2012, pp 216-223. 
+즉, 사람 단위로 분리된 데이터셋입니다.
 
-[4] Jorge Luis Reyes-Ortiz, Alessandro Ghio, Xavier Parra-Llanas, Davide Anguita, Joan Cabestany, Andreu Catal�. Human Activity and Motion Disorder Recognition: Towards Smarter Interactive Cognitive Environments. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.  
+3. 원시센서(raw signal)는 그대로 쓰나요?
 
-==================================================================================================
-Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita and Xavier Parra. November 2013.
+아니요! 데이터셋은 전처리가 많이 되어 있습니다.
+
+📌 전처리 과정 요약
+
+노이즈 필터 적용
+
+데이터를 2.56초 길이의 슬라이딩 윈도우로 자름
+
+각 윈도우는 128개의 연속 측정값 포함
+
+50% overlap (앞 샘플과 절반 겹침)
+
+가속도에서 중력(gravity)와 신체 움직임(body motion)을 분리
+
+각 윈도우에서 561개의 통계적 특징(feature) 을 추출
+
+시간 도메인(time domain) 특징
+
+주파수 도메인(frequency domain) 특징
+
+그래서 X_train.txt 파일에는 561개의 가공된 피처가 이미 만들어져 있습니다.
+
+4. 한 개의 샘플(record)에 포함된 정보는?
+
+각 행(샘플)은 다음 정보를 포함합니다:
+
+정규화된 561개의 센서 기반 feature
+
+해당 샘플의 활동(Activity) 레이블 (1~6)
+
+샘플을 수집한 참여자의 ID
+
+즉,
+
+한 사람(Subject)이 특정 시간구간(Window) 동안 한 행동(Activity)을
+561개의 수치(feature)로 표현한 데이터
+
+5. 데이터셋 구성 파일 설명
+📁 최상위 파일
+파일명	설명
+README.txt	데이터셋 설명 문서
+features.txt	561개의 feature 이름 목록
+features_info.txt	각 feature가 의미하는 수학적 계산 설명
+activity_labels.txt	1~6 → 행동 이름 매핑
+📁 train 폴더
+파일명	설명
+X_train.txt	학습용 feature (N × 561)
+y_train.txt	학습용 라벨 (N × 1)
+subject_train.txt	누구(참여자)가 수행한 샘플인지 ID (1~30)
+Inertial Signals/	원본에 가까운 시계열 데이터 (128개짜리 벡터)
+
+Inertial Signals 폴더에는 다음 같은 파일이 있음:
+
+total_acc_x_train.txt
+
+total_acc_y_train.txt
+
+total_acc_z_train.txt
+
+body_acc_x_train.txt
+
+body_gyro_x_train.txt
+(각각 128개의 raw 시계열을 담고 있음)
+
+이 폴더는 “원본 센서 시계열”이고
+X_train.txt는 “전처리된 특징(feature)”입니다.
+
+📁 test 폴더
+
+train과 동일한 구조의 테스트 세트.
+
+6. 데이터 단위·범위
+
+가속도: 중력 가속도 g(9.80665 m/s²) 기준
+
+자이로: rad/sec
+
+561개 feature는 모두 [-1, 1] 범위로 정규화됨
+
+7. 이 데이터셋을 사용할 때 참고해야 하는 점
+
+연구 목적–비상업적 사용 권장
+
+
+논문이나 프로젝트에 사용할 경우 README에 적힌 2013 ESANN 논문을 인용해야 함
